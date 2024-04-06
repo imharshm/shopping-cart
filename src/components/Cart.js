@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "../utils/context/CartContext";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart, clearItemFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, clearCart, clearItemFromCart, getCartTotal } =
+    useContext(CartContext);
   console.log(cartItems);
   return (
     <div className="cart-section">
       <div className="cart-title">
-        <h3>Cart</h3>
+        <h3>Cart ({cartItems.length})</h3>
         {cartItems.length > 0 && <button onClick={() => clearCart()}>Clear Cart</button>}
       </div>
       {cartItems.map((item) => {
@@ -28,6 +29,7 @@ const Cart = () => {
           </div>
         );
       })}
+      <h3> Total : {getCartTotal()}</h3>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "./Product";
 import Cart from "./Cart";
+import { PRODUCT_URL } from "../utils/constants";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ const Shop = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const data = await fetch("https://dummyjson.com/products");
+    const data = await fetch(PRODUCT_URL);
     const json = await data.json();
     setProducts(json.products);
   };
